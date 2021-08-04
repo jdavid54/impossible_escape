@@ -41,14 +41,14 @@ def xor2(list):
 # here we "xor" a list of case addresses. xor operates in binary
 # if an address is in binary form a d-digit form, for 8x8 grid, we have a 6-digit number as log2(8*8) = 6
 # xoring all the locations with 1 will give the address of the error case
-# which contains the missing 1s to make the overall xor result = 0
+# which contains the missing (or overflow) 1's to add (or substract) to make the overall xor result = 0
 # error case = 0 means no code error
 print('xor1 : error in ', xor1(locations_w_ones))
 print('xor2 : error in' , xor2(locations_w_ones))
 
 # correcting random block to make a correct coded block
 error_at = xor2(locations_w_ones)
-print('missing ones',to_bin(error_at))
+print('missing or overflow ones',to_bin(error_at))
 
 print('correcting error ....', error_at)
 bloc[error_at] = not bloc[error_at]
