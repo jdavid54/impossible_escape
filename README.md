@@ -4,7 +4,7 @@ based on hamming code for error dectection, how to solve an escape problem from 
 
   hamming_code.py : find in the grid the case where a overflow or missing 1 to be corrected !
   
-  howto : operation xor all the indexes of cases with 1 and flip the value in it.
+  howto operation : xor all the indexes of cases with 1. this will give the address of the case where the value must be changed.
 
 # The almost impossible chessboard puzzle
 
