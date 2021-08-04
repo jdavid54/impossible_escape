@@ -9,11 +9,14 @@ from operator import xor
 n = 8
 digits = int(np.log2(n**2))
 
+def to_bin(i):
+    return bin(i).replace("0b", "").zfill(digits)
+
 # random blocks can be uncorrect coded blocks
 bloc = np.random.randint(0,2,n**2)
 locations_w_ones = [i for i, bit in enumerate(bloc) if bit]
 # binary 
-bin_locations = [bin(i).replace("0b", "").zfill(digits)  for i, bit in enumerate(bloc) if bit]
+bin_locations = [to_bin(i) for i, bit in enumerate(bloc) if bit]
 
 
 print(bloc.reshape(n,n))
@@ -38,12 +41,15 @@ def xor2(list):
 # here we "xor" a list of case addresses. xor operates in binary
 # if an address is in binary form a d-digit form, for 8x8 grid, we have a 6-digit number as log2(8*8) = 6
 # xoring all the locations with 1 will give the address of the error case
+# which contains the missing 1s to make the overall xor result = 0
 # error case = 0 means no code error
 print('xor1 : error in ', xor1(locations_w_ones))
 print('xor2 : error in' , xor2(locations_w_ones))
 
 # correcting random block to make a correct coded block
 error_at = xor2(locations_w_ones)
+print('missing ones',to_bin(error_at))
+
 print('correcting error ....', error_at)
 bloc[error_at] = not bloc[error_at]
 print(bloc.reshape(n,n))
