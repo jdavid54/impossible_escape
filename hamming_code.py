@@ -6,7 +6,7 @@ import functools
 from operator import xor
 
 # block n x n, n must be power of 2 ??
-n = 4
+n = 8
 digits = int(np.log2(n**2))
 
 # random blocks can be uncorrect coded blocks
@@ -14,10 +14,11 @@ bloc = np.random.randint(0,2,n**2)
 locations_w_ones = [i for i, bit in enumerate(bloc) if bit]
 # binary 
 bin_locations = [bin(i).replace("0b", "").zfill(digits)  for i, bit in enumerate(bloc) if bit]
-print(bin_locations)
+
 
 print(bloc.reshape(n,n))
 print(locations_w_ones)
+print(bin_locations)
 
 
 # xor all the list, as "xor 1" twice gives back initial value,
