@@ -48,9 +48,13 @@ print('xor2 : error in' , xor2(locations_w_ones))
 
 # correcting random block to make a correct coded block
 error_at = xor2(locations_w_ones)
-print('missing or overflow ones',to_bin(error_at))
+print('missing or overflow ones at',to_bin(error_at))
 
 print('correcting error ....', error_at)
+if bloc[error_at]:
+    print('overflow 1, substract 1')
+else:
+    print('missing 1, add 1')
 bloc[error_at] = not bloc[error_at]
 print(bloc.reshape(n,n))
 
