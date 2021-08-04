@@ -2,6 +2,9 @@
 
 based on hamming code for error dectection, how to solve an escape problem from a 8x8 grid
 
+  hamming_code.py : find in the grid the case where a overflow or missing 1 to be corrected !
+  howto : operation xor all the indexes of cases with 1 and flip the value in it.
+
 # The almost impossible chessboard puzzle
 
 The jailer will take you into a private cell. In the cell will be a chessboard and a jar containing 64 coins.
